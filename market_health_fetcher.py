@@ -11,7 +11,9 @@ import pandas as pd
 from datetime import datetime
 import os
 import base64
+import pytz
 
+IST = pytz.timezone("Asia/Kolkata")
 EXCEL_FILE = "market_health_data.xlsx"
 UPDATE_INTERVAL = 120  # 2 minutes
 
@@ -128,7 +130,7 @@ def upload_to_github():
         
         # Prepare data
         data = {
-            "message": f"Update data: {datetime.now().strftime('%Y-%m-%d %H:%M')}",
+            "message": f"Update data: {datetime.now(IST).strftime('%Y-%m-%d %H:%M')}",
             "content": content,
             "branch": GITHUB_BRANCH
         }
@@ -157,7 +159,7 @@ def upload_to_github():
 def update_excel_file():
     """Fetch and save to Excel"""
     print(f"\n{'='*70}")
-    print(f"🔄 {datetime.now().strftime('%d %b %Y, %I:%M %p')}")
+    print(f"🔄 {datetime.now(IST).strftime('%d %b %Y, %I:%M %p')}")
     print(f"{'='*70}")
     
     success_count = 0
@@ -167,7 +169,7 @@ def update_excel_file():
             
             # Metadata
             metadata_df = pd.DataFrame({
-                'Last Updated': [datetime.now().strftime('%d %b %Y, %I:%M %p')],
+                'Last Updated': [datetime.now(IST).strftime('%d %b %Y, %I:%M %p')],
                 'Total Queries': [len(QUERIES)],
             })
             metadata_df.to_excel(writer, sheet_name='Metadata', index=False)
