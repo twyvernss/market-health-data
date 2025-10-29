@@ -39,6 +39,10 @@ QUERIES = {
         "query": "select ( ( latest Close - 30 days ago Close ) / 30 days ago Close ) * 100 as '% change' WHERE( {cash} ( latest close > 20 and market cap > 500 ) ) GROUP BY symbol ORDER BY 1 desc",
         "icon": "📈"
     },
+    "distance from Dma50": {
+        "query": "select latest Close - latest Sma( latest Close , 50 ) / latest Sma( latest Close , 50 ) * 100 as 'Distance from SMA50' WHERE {45603} 1 = 1 GROUP BY symbol ORDER BY 1 desc",
+        "icon": "📈"
+    }
 }
 
 
