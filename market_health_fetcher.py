@@ -44,7 +44,41 @@ QUERIES = {
     "distance from Dma50": {
         "query": "select latest Close - latest Sma( latest Close , 50 ) / latest Sma( latest Close , 50 ) * 100 as 'Distance from SMA50' WHERE {45603} 1 = 1 GROUP BY symbol ORDER BY 1 desc",
         "icon": "📈"
-    }
+    },
+    "Retail Shareholding Increase": {
+        "query": "select 3 quarter ago {custom_indicator_68140_start}\"total percentage - (  total foreign promoter and group percentage +  indian promoter and group percentage +  {custom_indicator_52652_start}\"foreign institution other percentage +  foreign direct investments institutions percentage +  foreign institutional investors percentage +  foreign bank percentage +  foreign collaborators percentage +  foreign venture capital investors percentage +  foreign non institution other percentage\"{custom_indicator_52652_end} +  {custom_indicator_52657_start}\"mutual funds or uti percentage +  insurance companies percentage +  others institutions percentage +  clearing members percentage +  corporate bodies percentage +  govt central or state percentage +  trusts institutes percentage +  venture capital funds percentage +  nsdl intransit percentage +  financial institutions or banks percentage\"{custom_indicator_52657_end} +  others non promoter non institution percentage )\"{custom_indicator_68140_end} as '% 3 Qtrs ago', 2 quarter ago {custom_indicator_68140_start}\"total percentage - (  total foreign promoter and group percentage +  indian promoter and group percentage +  {custom_indicator_52652_start}\"foreign institution other percentage +  foreign direct investments institutions percentage +  foreign institutional investors percentage +  foreign bank percentage +  foreign collaborators percentage +  foreign venture capital investors percentage +  foreign non institution other percentage\"{custom_indicator_52652_end} +  {custom_indicator_52657_start}\"mutual funds or uti percentage +  insurance companies percentage +  others institutions percentage +  clearing members percentage +  corporate bodies percentage +  govt central or state percentage +  trusts institutes percentage +  venture capital funds percentage +  nsdl intransit percentage +  financial institutions or banks percentage\"{custom_indicator_52657_end} +  others non promoter non institution percentage )\"{custom_indicator_68140_end} as '% 2 Qtr ago', 1 quarter ago {custom_indicator_68140_start}\"total percentage - (  total foreign promoter and group percentage +  indian promoter and group percentage +  {custom_indicator_52652_start}\"foreign institution other percentage +  foreign direct investments institutions percentage +  foreign institutional investors percentage +  foreign bank percentage +  foreign collaborators percentage +  foreign venture capital investors percentage +  foreign non institution other percentage\"{custom_indicator_52652_end} +  {custom_indicator_52657_start}\"mutual funds or uti percentage +  insurance companies percentage +  others institutions percentage +  clearing members percentage +  corporate bodies percentage +  govt central or state percentage +  trusts institutes percentage +  venture capital funds percentage +  nsdl intransit percentage +  financial institutions or banks percentage\"{custom_indicator_52657_end} +  others non promoter non institution percentage )\"{custom_indicator_68140_end} as '% 1 Qtr ago', Quarterly {custom_indicator_68140_start}\"total percentage - (  total foreign promoter and group percentage +  indian promoter and group percentage +  {custom_indicator_52652_start}\"foreign institution other percentage +  foreign direct investments institutions percentage +  foreign institutional investors percentage +  foreign bank percentage +  foreign collaborators percentage +  foreign venture capital investors percentage +  foreign non institution other percentage\"{custom_indicator_52652_end} +  {custom_indicator_52657_start}\"mutual funds or uti percentage +  insurance companies percentage +  others institutions percentage +  clearing members percentage +  corporate bodies percentage +  govt central or state percentage +  trusts institutes percentage +  venture capital funds percentage +  nsdl intransit percentage +  financial institutions or banks percentage\"{custom_indicator_52657_end} +  others non promoter non institution percentage )\"{custom_indicator_68140_end} as '% Current Qtr', Quarterly {custom_indicator_68140_start}\"total percentage - (  total foreign promoter and group percentage +  indian promoter and group percentage +  {custom_indicator_52652_start}\"foreign institution other percentage +  foreign direct investments institutions percentage +  foreign institutional investors percentage +  foreign bank percentage +  foreign collaborators percentage +  foreign venture capital investors percentage +  foreign non institution other percentage\"{custom_indicator_52652_end} +  {custom_indicator_52657_start}\"mutual funds or uti percentage +  insurance companies percentage +  others institutions percentage +  clearing members percentage +  corporate bodies percentage +  govt central or state percentage +  trusts institutes percentage +  venture capital funds percentage +  nsdl intransit percentage +  financial institutions or banks percentage\"{custom_indicator_52657_end} +  others non promoter non institution percentage )\"{custom_indicator_68140_end} - 3 quarter ago {custom_indicator_68140_start}\"total percentage - (  total foreign promoter and group percentage +  indian promoter and group percentage +  {custom_indicator_52652_start}\"foreign institution other percentage +  foreign direct investments institutions percentage +  foreign institutional investors percentage +  foreign bank percentage +  foreign collaborators percentage +  foreign venture capital investors percentage +  foreign non institution other percentage\"{custom_indicator_52652_end} +  {custom_indicator_52657_start}\"mutual funds or uti percentage +  insurance companies percentage +  others institutions percentage +  clearing members percentage +  corporate bodies percentage +  govt central or state percentage +  trusts institutes percentage +  venture capital funds percentage +  nsdl intransit percentage +  financial institutions or banks percentage\"{custom_indicator_52657_end} +  others non promoter non institution percentage )\"{custom_indicator_68140_end} as 'Change in 3 Qtrs' WHERE {cash} 1 = 1 GROUP BY symbol ORDER BY 5 desc",
+        "icon": "👥"
+    },
+
+    "Industry Analysis": {
+        "query": "select latest \"close - 1 candle ago close / 1 candle ago close * 100\" as 'Daily', Weekly \"close - 1 candle ago close / 1 candle ago close * 100\" as 'Weekly', Monthly \"close - 1 candle ago close / 1 candle ago close * 100\" as 'Monthly', Yearly \"close - 1 candle ago close / 1 candle ago close * 100\" as '1 year', 1 year ago \"close - 1 candle ago close / 1 candle ago close * 100\" as '2 years', 2 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" as '3 years', 4 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" as '5 years', 1 year ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 2 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 3 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 4 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 5 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" / 5 as 'CAGR(5Y)', 1 year ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 2 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 3 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 4 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 5 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 6 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 7 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 8 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 9 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" + 10 years ago \"close - 1 candle ago close / 1 candle ago close * 100\" / 10 as 'CAGR(10Y)' WHERE( {cash} ( market cap > 500 ) ) GROUP BY industry ORDER BY 2 desc",
+        "icon": "🏭"
+    },
+
+    "Stock List": {
+        "query": "select Symbol as 'STOCK NAME', latest Close as 'PRICE', ( ( latest Close - 1 day ago Close ) / 1 day ago Close ) * 100 as '% CHANGE', 52 weeks ago High as '52w High', ( ( 52 weeks ago High - latest Close ) / 52 weeks ago High ) * 100 as 'Distance 52w High', Market Cap as 'Market Cap' WHERE {cash} 1 = 1 GROUP BY symbol ORDER BY 1 desc",
+        "icon": "📋"
+    },
+
+    "1 Year Return": {
+        "query": "select ( ( latest Close - 1 year ago Close ) / 1 year ago Close ) * 100 as '% change' WHERE( {cash} ( latest close > 20 and market cap > 500 ) ) GROUP BY symbol ORDER BY 1 desc",
+        "icon": "📅"
+    },
+
+    "Promoters Increasing": {
+        "query": "select Quarterly {custom_indicator_74292_start}\"indian promoter and group percentage + total foreign promoter and group percentage\"{custom_indicator_74292_end} as '% Current Qtr', Quarterly {custom_indicator_74292_start}\"indian promoter and group percentage + total foreign promoter and group percentage\"{custom_indicator_74292_end} - 3 quarter ago {custom_indicator_74292_start}\"indian promoter and group percentage + total foreign promoter and group percentage\"{custom_indicator_74292_end} as 'Change in 3 Qtrs', 3 quarter ago {custom_indicator_74292_start}\"indian promoter and group percentage + total foreign promoter and group percentage\"{custom_indicator_74292_end} as '% 3 Qtr ago', 2 quarter ago {custom_indicator_74292_start}\"indian promoter and group percentage + total foreign promoter and group percentage\"{custom_indicator_74292_end} as '% 2 Qtr ago', 1 quarter ago {custom_indicator_74292_start}\"indian promoter and group percentage + total foreign promoter and group percentage\"{custom_indicator_74292_end} as '% 1 Qtr ago' WHERE {cash} 1 = 1 GROUP BY symbol ORDER BY 2 desc",
+        "icon": "👔"
+    },
+
+    "2 Week Return": {
+        "query": "select ( ( latest Close - 14 days ago Close ) / 14 days ago Close ) * 100 as '% change' WHERE( {cash} ( latest close > 20 and market cap > 500 ) ) GROUP BY symbol ORDER BY 1 desc",
+        "icon": "📆"
+    },
+
+    "FII Increasing Stake": {
+        "query": "select 3 quarter ago {custom_indicator_52652_start}\"foreign institution other percentage + foreign direct investments institutions percentage + foreign institutional investors percentage + foreign bank percentage + foreign collaborators percentage + foreign venture capital investors percentage + foreign non institution other percentage\"{custom_indicator_52652_end} as '% 3 Qtr ago', 2 quarter ago {custom_indicator_52652_start}\"foreign institution other percentage + foreign direct investments institutions percentage + foreign institutional investors percentage + foreign bank percentage + foreign collaborators percentage + foreign venture capital investors percentage + foreign non institution other percentage\"{custom_indicator_52652_end} as '% 2 Qtr ago', 1 quarter ago {custom_indicator_52652_start}\"foreign institution other percentage + foreign direct investments institutions percentage + foreign institutional investors percentage + foreign bank percentage + foreign collaborators percentage + foreign venture capital investors percentage + foreign non institution other percentage\"{custom_indicator_52652_end} as '% 1 Qtr ago', Quarterly {custom_indicator_52652_start}\"foreign institution other percentage + foreign direct investments institutions percentage + foreign institutional investors percentage + foreign bank percentage + foreign collaborators percentage + foreign venture capital investors percentage + foreign non institution other percentage\"{custom_indicator_52652_end} as '% Current Qtr', Quarterly {custom_indicator_52652_start}\"foreign institution other percentage + foreign direct investments institutions percentage + foreign institutional investors percentage + foreign bank percentage + foreign collaborators percentage + foreign venture capital investors percentage + foreign non institution other percentage\"{custom_indicator_52652_end} - 3 quarter ago {custom_indicator_52652_start}\"foreign institution other percentage + foreign direct investments institutions percentage + foreign institutional investors percentage + foreign bank percentage + foreign collaborators percentage + foreign venture capital investors percentage + foreign non institution other percentage\"{custom_indicator_52652_end} as 'Change in 3 Qtr' WHERE {cash} 1 = 1 GROUP BY symbol ORDER BY 5 desc",
+        "icon": "🌍"
+    },
 }
 
 
@@ -100,6 +134,21 @@ def parse_widget_data(data):
         rows.append(row)
     
     return pd.DataFrame(rows)
+
+
+def is_market_open():
+    """Check if Indian stock market is open"""
+    now = datetime.now(IST)
+    
+    # Check if weekend (Saturday=5, Sunday=6)
+    if now.weekday() >= 5:
+        return False
+    
+    # Market hours: 9:15 AM - 3:30 PM IST
+    market_start = now.replace(hour=9, minute=15, second=0, microsecond=0)
+    market_end = now.replace(hour=15, minute=30, second=0, microsecond=0)
+    
+    return market_start <= now <= market_end
 
 
 def upload_to_github():
@@ -214,13 +263,35 @@ def main():
     """Main loop"""
     print("🚀 Market Health Fetcher - GitHub Edition")
     print(f"📊 Queries: {len(QUERIES)}")
-    print(f"⏱️  Interval: {UPDATE_INTERVAL}s\n")
+    print(f"⏱️  Interval: {UPDATE_INTERVAL}s")
+    print(f"🕐 Market Hours: 9:15 AM - 3:30 PM IST (Mon-Fri)\n")
     
     while True:
         try:
-            update_excel_file()
-            print(f"\n⏳ Next in {UPDATE_INTERVAL}s...\n")
+            # Check if market is open
+            if is_market_open():
+                print("✅ Market is OPEN - Fetching data...")
+                update_excel_file()
+                print(f"\n⏳ Next update in {UPDATE_INTERVAL}s...\n")
+            else:
+                now = datetime.now(IST)
+                print(f"⏸️  Market CLOSED ({now.strftime('%I:%M %p')}) - Skipping update")
+                
+                # Calculate time until market opens
+                if now.weekday() >= 5:  # Weekend
+                    days_until_monday = 7 - now.weekday()
+                    next_open = now + pd.Timedelta(days=days_until_monday)
+                    next_open = next_open.replace(hour=9, minute=15, second=0)
+                    print(f"   Next market open: Monday at 9:15 AM")
+                elif now.hour < 9 or (now.hour == 9 and now.minute < 15):
+                    print(f"   Market opens today at 9:15 AM")
+                else:
+                    print(f"   Market opens tomorrow at 9:15 AM")
+                
+                print(f"   Checking again in {UPDATE_INTERVAL}s...\n")
+            
             time.sleep(UPDATE_INTERVAL)
+            
         except KeyboardInterrupt:
             print("\n🛑 Stopped")
             break
